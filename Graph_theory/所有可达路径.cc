@@ -6,17 +6,15 @@ using namespace std;
 vector<vector<int>> res;
 vector<int > path;
 
-void dfs(const vector<vector<int>> &graph, vector<int> &used, int s, int m){
+void dfs(const vector<vector<int>> &graph, int s, int m){
     if(s == m){
         res.push_back(path);
         return ;
     }
     for(int i=1;i<graph.size();i++){
-        if(graph[s][i] == 1 && used[i] == 0){
-            used[i] = 1;
+        if(graph[s][i] == 1){
             path.push_back(i);
-            dfs(graph,used,i,m);
-            used[i] = 0;
+            dfs(graph,i,m);
             path.pop_back();
         }
     }
@@ -31,7 +29,6 @@ int main(){
 
     vector<vector<int >> graph(m+1, vector<int>(m+1,0));
 
-    vector<int > used(m,0);
 
     for(int i=0;i<n;i++){
         int a,b;
@@ -42,8 +39,9 @@ int main(){
     res.clear();
     path.clear();
     path.push_back(1);
-    dfs(graph,used,1,m);
+    dfs(graph,1,m);
     
+    if (res.size() == 0) cout << -1 << endl;
     for(auto &v : res){
         for(int i=0;i<v.size();i++){
             cout << v[i] ;
