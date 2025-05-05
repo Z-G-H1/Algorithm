@@ -41,6 +41,7 @@ int main(){
     path.push_back(1);
     dfs(graph,1,m);
     
+    // 考虑到没有路径的情况
     if (res.size() == 0) cout << -1 << endl;
     for(auto &v : res){
         for(int i=0;i<v.size();i++){
