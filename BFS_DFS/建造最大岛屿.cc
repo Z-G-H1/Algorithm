@@ -46,7 +46,7 @@ int main(){
         for(int j=0;j<n;j++){
             if(graph[i][j] == 0){
                 area = 0;
-                graph[i][j] = 1;
+                graph[i][j] = 1; 
                 bfs(graph,visited,i,j);
                 graph[i][j] = 0;
                 res = max(area, res);
